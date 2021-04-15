@@ -5,9 +5,9 @@
         <table class='table align-middle'>
             <thead>
                 <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
+                    <th scope="col" style='text-align: center'>Stage Photo</th>
+                    <th scope="col" style='text-align: center'>Title</th>
+                    <th scope="col" style='text-align: center'>Description</th>
                 </tr>
             </thead>
             {% for show in searched_show %}
@@ -16,7 +16,7 @@
                     <td>
                         <img src="/media/{{ show.image }}" width="200px" height="150px" alt="{{ show.title }}">
                     </td>
-                    <td class="description"><h5>{{ show.title }}</h5></td>
+                    <td class="description"><h6>{{ show.title }}</h6></td>
                     <td class="description">
                         <p>{{ show.description }}</p>
                     </td>
@@ -27,4 +27,27 @@
     {% else %}
     <h3>Sorry... Make sure you searhed something...</h3>
     {% endif %}
+    <!-- <nav aria-label="...">
+        <ul class="pagination pagination justify-content-center">
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">Top</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">
+                                <i class="fas fa-hand-point-left"></i>
+                            </a>
+                    {% endif %}
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">
+                            <i class="fas fa-hand-point-right"></i>
+                        </a>
+                        <a href="?page={{page_obj.paginator.num_pages }}">Bottom</a>
+                    {% endif %}
+                </span>
+            </div>
+        </ul>
+    </nav> -->
 {% endblock content %}

@@ -1,13 +1,18 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.core.paginator import Paginator
 from .models import Show
 from .forms import ShowForm
 # Create your views here.
 def allshows(request):
     shows = Show.objects.all()
+    paginator = Paginator(shows,5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
-        'shows' : shows
+        'shows' : shows,
+        'page_obj': page_obj
     }
     return render(request, 'shows/allshows.html',context)
 
@@ -51,8 +56,15 @@ def search_show(request):
     if request.method == 'POST':
         searched = request.POST['searched']
         searched_show = Show.objects.filter(title__contains=searched)
-        return render(request,'shows/search_show.html', 
-            {'searched': searched, 'searched_show':searched_show})
+        # paginator = Paginator(searched_show,2)
+        # page_number = request.POST.get('page')
+        # page_obj = paginator.get_page(page_number)
+        context = {
+            'searched': searched, 
+            'searched_show':searched_show, 
+            # 'page_obj':page_obj
+        }
+        return render(request,'shows/search_show.html', context)
     else:
         print('get a get request')
         return redirect(request,'shows/allshows.hmtl')
