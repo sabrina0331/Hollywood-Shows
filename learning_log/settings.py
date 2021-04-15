@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'learning_logs',
     'users',
     'shows',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR, 'shows/static')
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
