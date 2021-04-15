@@ -7,6 +7,7 @@ class Show(models.Model):
     released_date = models.DateField()
     description = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True, blank=True,null=True)
-
+    image = models.ImageField(upload_to='images/', blank=True)
+    
     def __str__(self):
         return self.title

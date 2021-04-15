@@ -1,9 +1,10 @@
 {% extends 'shows/base.html' %}
 {% load static %}
 {% block content %}
+
     <div class="card" style="width: 18rem">
         <img 
-            src="https://i.pinimg.com/originals/c3/88/f5/c388f5d35819f5c8f16d3c0939079ac0.jpg" 
+            src="/media/{{ this_show.image }}" width="auto" height="200px" 
             class="card-img-top"
             alt="the big bang theory">
         <div class="card-body">
@@ -20,6 +21,7 @@
         <div class='card-body'>
             <a class="btn btn-secondary" href="{% url 'shows:edit_show' this_show.id %}">Edit</a>
             <a class="btn btn-danger" href="{% url 'shows:delete_show' this_show.id %}">Delete</a>
+            <a class="btn btn-warning" href="{% url 'shows:allshows' %}">Back</a>
         </div>
     </div>
  

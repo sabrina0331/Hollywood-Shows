@@ -13,7 +13,7 @@ def allshows(request):
 
 def new_page(request):
     if request.method == 'POST':
-        form = ShowForm(request.POST)
+        form = ShowForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('shows:allshows'))
@@ -33,7 +33,7 @@ def update_show(request,show_id):
         print("It's not a post request")
         form = ShowForm(instance=update_show)
     else:
-        form=ShowForm(instance=update_show,data=request.POST)
+        form=ShowForm(instance=update_show,data=request.POST,files=request.FILES)
         print('It is a post request')
         if form.is_valid():
             form.save()
@@ -50,7 +50,6 @@ def delete_show(request,delete_id):
 def search_show(request):
     if request.method == 'POST':
         searched = request.POST['searched']
-        print('pressed search')
         searched_show = Show.objects.filter(title__contains=searched)
         return render(request,'shows/search_show.html', 
             {'searched': searched, 'searched_show':searched_show})

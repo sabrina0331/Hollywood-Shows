@@ -4,7 +4,7 @@
 {% block content %}
     <h2 class="display-6">Update TV Show {{ update_show.id }}</h2>
     <div class="w-50 shadow p-3 mb-5 bg-white rounded mx-auto" style="background-color:silver" >
-        <form action="{% url 'shows:edit_show' update_show.id %}" method="post">
+        <form action="{% url 'shows:edit_show' update_show.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
         <button type='submit' class="btn btn-success btn-sm ">Update</button>

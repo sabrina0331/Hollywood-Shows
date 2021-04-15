@@ -2,14 +2,29 @@
 {% load static %}
 {% block content %}
     {% if searched %}
-        <h2>You have searched {{ searched }}</h2>
-        {% for show in searched_show %}
-            <h3>Title: {{ show.title }}</h3>
-            <h3>Network: {{ show.network }}</h3>
-            <h3>Release Date: {{ show.released_date }}</h3>
-            <h3>Description: {{ show.description }}</h3>
-        {% endfor %}
+        <table class='table align-middle'>
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            {% for show in searched_show %}
+            <tbody>
+                <tr>  
+                    <td>
+                        <img src="/media/{{ show.image }}" width="200px" height="150px" alt="{{ show.title }}">
+                    </td>
+                    <td class="description"><h5>{{ show.title }}</h5></td>
+                    <td class="description">
+                        <p>{{ show.description }}</p>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
     {% else %}
-        <h3>Sorry... Make sure you searhed something...</h3>
+    <h3>Sorry... Make sure you searhed something...</h3>
     {% endif %}
 {% endblock content %}
