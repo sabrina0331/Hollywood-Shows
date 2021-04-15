@@ -1,0 +1,10 @@
+{% extends 'shows/base.html' %}
+{% load static %}
+{% block content %}
+    <h2>Update TV Show {{ update_show.id }}</h2>
+    <form action="{% url 'shows:edit_show' update_show.id %}" method="post">
+    {% csrf_token %}
+      {{ form }}
+        <button name='submit'>Update</button>
+    </form>
+{% endblock content %}

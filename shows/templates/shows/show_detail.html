@@ -1,0 +1,14 @@
+{% extends 'shows/base.html' %}
+{% load static %}
+{% block content %}
+    <h2>TV Show {{ this_show.id }}</h2>
+    <h4>Title: {{ this_show.title }}</h4>
+    <h4>NetWork: {{ this_show.network }}</h4>
+    <h4>Release Date: {{ this_show.released_date }}</h4>
+    <h4>Description: {{ this_show.description }}</h4>
+
+
+    <h4>Last Updated: {{ this_show.date_added }}</h4>
+    <h3><a href="{% url 'shows:edit_show' this_show.id %}">Edit</a></h3> 
+    <h3><a href="{% url 'shows:delete_show' this_show.id %}">Delete</a></h3>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends 'shows/base.html' %}
+{% load static %}
+{% block content %}
+    {% if searched %}
+        <h2>You have searched {{ searched }}</h2>
+        {% for show in searched_show %}
+            <h3>Title: {{ show.title }}</h3>
+            <h3>Network: {{ show.network }}</h3>
+            <h3>Release Date: {{ show.released_date }}</h3>
+            <h3>Description: {{ show.description }}</h3>
+        {% endfor %}
+    {% else %}
+        <h3>Sorry... Make sure you searhed something...</h3>
+    {% endif %}
+{% endblock content %}

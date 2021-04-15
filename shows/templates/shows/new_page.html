@@ -1,0 +1,10 @@
+{% extends 'shows/base.html' %}
+{% load static %}
+{% block content %}
+    <h1>Add new show:</h1>
+    <form action="{% url 'shows:new_page' %}" method='post'>
+    {% csrf_token %}
+        {{ form }}
+        <button name='submit'>Create</button>
+    </form>
+{% endblock content %}

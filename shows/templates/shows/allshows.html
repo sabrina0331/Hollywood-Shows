@@ -1,0 +1,28 @@
+{% extends 'shows/base.html' %}
+{% load static %}
+{% block content %}
+    <table class="table align-middle">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Network</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Action</th>
+        </tr> 
+        {% for show in shows %}
+        <tr>
+            <td><a href="{% url 'shows:show_detail' show.id %}">{{ show.id }}</a></td>
+            <td>{{ show.title }}</td>
+            <td>{{ show.network }}</td>
+            <td>{{ show.released_date }}</td>
+            <td>
+                <a class='btn btn-primary' href="{% url 'shows:show_detail' show.id %}">Show</a>
+                <a class='btn btn-secondary' href="{% url 'shows:edit_show' show.id %}">Edit</a>
+                <a class='btn btn-danger' href="{% url 'shows:delete_show' show.id%}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    
+{% endblock content %}
